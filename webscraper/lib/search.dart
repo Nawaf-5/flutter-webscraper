@@ -10,6 +10,9 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  String searchURL = '';
+  String searchItem = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +29,9 @@ class _SearchState extends State<Search> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                const TextField(
+                TextField(
                   cursorColor: Colors.white,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'URL to search',
                     labelStyle: TextStyle(
@@ -38,10 +41,22 @@ class _SearchState extends State<Search> {
                     filled: true,
                     hintText: 'Paste the URL here!',
                   ),
+                  onChanged: (v) {
+                    setState(() {
+                      searchURL = v;
+                      print(searchURL);
+                    });
+                  },
                 ),
                 const SizedBox(height: 15),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  onChanged: (v) {
+                    setState(() {
+                      searchItem = v;
+                      print(searchItem);
+                    });
+                  },
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Tag or ID',
                     labelStyle: TextStyle(
@@ -52,18 +67,17 @@ class _SearchState extends State<Search> {
                     hintText: 'e.g. div, p, h1, etc...',
                   ),
                 ),
-                SizedBox(height: 15),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 51,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        print('LOL');
-                      });
-                    },
-                    child: Text('Search'),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  style: const ButtonStyle(
+                    alignment: Alignment.center,
                   ),
+                  onPressed: () {
+                    setState(() {
+                      print(searchURL + ' What??');
+                    });
+                  },
+                  child: const Text('Search'),
                 )
               ],
             ),
@@ -73,3 +87,16 @@ class _SearchState extends State<Search> {
     );
   }
 }
+// const SizedBox(height: 15),
+//                 SizedBox(
+//                   width: MediaQuery.of(context).size.width,
+//                   height: 51,
+//                   child: ElevatedButton(
+//                     onPressed: () {
+//                       setState(() {
+//                         print('LOL');
+//                       });
+//                     },
+//                     child: const Text('Search'),
+//                   ),
+//                 )
