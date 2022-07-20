@@ -7,13 +7,14 @@ class CustomCard extends StatelessWidget {
   final double rTopRight;
   final double rBottomLeft;
   final double rBottomRight;
-  CustomCard(
-      {required this.height,
-      required this.child,
-      required this.rTopLeft,
-      required this.rBottomLeft,
-      required this.rBottomRight,
-      required this.rTopRight});
+  CustomCard({
+    required this.height,
+    required this.rTopLeft,
+    required this.rBottomLeft,
+    required this.rBottomRight,
+    required this.rTopRight,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {

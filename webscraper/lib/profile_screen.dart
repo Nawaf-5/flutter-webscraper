@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:webscraper/custom_card.dart';
+import 'package:webscraper/utilities/constants.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -12,9 +14,29 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(8),
         child: Column(
-          children: const [],
+          children: [
+            CustomCard(
+              height: 150,
+              rTopLeft: 12,
+              rBottomLeft: 12,
+              rBottomRight: 12,
+              rTopRight: 12,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Result font size:',
+                      style: kTextStyle,
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
