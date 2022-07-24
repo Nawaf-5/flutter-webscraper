@@ -10,6 +10,26 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  void changeFontSizeMinus() async {
+    setState(() {
+      if (resultsFontSize >= 14) {
+        resultsFontSize -= 2;
+      } else {
+        resultsFontSize = 12;
+      }
+    });
+  }
+
+  void changeFontSizePlus() async {
+    setState(() {
+      if (resultsFontSize <= 54) {
+        resultsFontSize += 2;
+      } else {
+        resultsFontSize = 56;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +48,35 @@ class _ProfileState extends State<Profile> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Result font size:',
                       style: kTextStyle,
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              changeFontSizeMinus();
+                            },
+                            child: const Text('-'),
+                          ),
+                          Text(
+                            '$resultsFontSize',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 25),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              changeFontSizePlus();
+                            },
+                            child: const Text('+'),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

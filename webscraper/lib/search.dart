@@ -13,6 +13,7 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   String searchURL = '';
   String searchItem = '';
+  // double resultsFontSize = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -106,37 +107,37 @@ class _SearchState extends State<Search> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
-                      const Text(
+                      Text(
                         'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: kResultsFontSize),
+                        style: TextStyle(fontSize: resultsFontSize),
                       ),
                     ],
                   ),
