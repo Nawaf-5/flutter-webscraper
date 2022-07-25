@@ -21,130 +21,132 @@ class _SearchState extends State<Search> {
       appBar: AppBar(title: const Text('Search')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            CustomCard(
-              height: 205,
-              rTopLeft: 12,
-              rBottomLeft: 12,
-              rBottomRight: 12,
-              rTopRight: 12,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  children: [
-                    TextField(
-                      cursorColor: Colors.white,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'URL to search',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              CustomCard(
+                height: 205,
+                rTopLeft: 12,
+                rBottomLeft: 12,
+                rBottomRight: 12,
+                rTopRight: 12,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        cursorColor: Colors.white,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'URL to search',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.black26,
+                          filled: true,
+                          hintText: 'Paste the URL here!',
                         ),
-                        fillColor: Colors.black26,
-                        filled: true,
-                        hintText: 'Paste the URL here!',
-                      ),
-                      onChanged: (v) {
-                        setState(() {
-                          searchURL = v;
-                          print(searchURL);
-                        });
-                      },
-                    ),
-                    const SizedBox(height: 15),
-                    TextField(
-                      onChanged: (v) {
-                        setState(() {
-                          searchItem = v;
-                          print(searchItem);
-                        });
-                      },
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Tag or ID',
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                        ),
-                        fillColor: Colors.black26,
-                        filled: true,
-                        hintText: 'e.g. div, p, h1, etc...',
-                      ),
-                    ),
-                    //
-                    const SizedBox(height: 15),
-                    //Search Button
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 2,
-                      height: 33,
-                      child: ElevatedButton(
-                        style: const ButtonStyle(
-                          alignment: Alignment.center,
-                        ),
-                        onPressed: () {
+                        onChanged: (v) {
                           setState(() {
-                            print(searchURL + ' Test');
+                            searchURL = v;
+                            print(searchURL);
                           });
                         },
-                        //child: const Text('Search'),
-                        child: const Text('Search'),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            CustomCard(
-              height: 415,
-              rTopLeft: 12,
-              rBottomLeft: 12,
-              rBottomRight: 12,
-              rTopRight: 12,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
+                      const SizedBox(height: 15),
+                      TextField(
+                        onChanged: (v) {
+                          setState(() {
+                            searchItem = v;
+                            print(searchItem);
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Tag or ID',
+                          labelStyle: TextStyle(
+                            color: Colors.white,
+                          ),
+                          fillColor: Colors.black26,
+                          filled: true,
+                          hintText: 'e.g. div, p, h1, etc...',
+                        ),
                       ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
-                      Text(
-                        'Lorem ipsum dolor sit amet',
-                        style: TextStyle(fontSize: resultsFontSize),
-                      ),
+                      //
+                      const SizedBox(height: 15),
+                      //Search Button
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width / 2,
+                        height: 33,
+                        child: ElevatedButton(
+                          style: const ButtonStyle(
+                            alignment: Alignment.center,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              print(searchURL + ' Test');
+                            });
+                          },
+                          //child: const Text('Search'),
+                          child: const Text('Search'),
+                        ),
+                      )
                     ],
                   ),
                 ),
               ),
-            )
-          ],
+              const SizedBox(height: 15),
+              CustomCard(
+                height: 415,
+                rTopLeft: 12,
+                rBottomLeft: 12,
+                rBottomRight: 12,
+                rTopRight: 12,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                        Text(
+                          'Lorem ipsum dolor sit amet',
+                          style: TextStyle(fontSize: resultsFontSize),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
