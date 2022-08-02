@@ -20,58 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
-                children: const [
-                  Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    'Favorites',
-                    style: TextStyle(
-                      fontSize: kFontSizeTitle,
-                      fontFamily: kFontFam,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 5),
-              CustomCard(
-                height: 150,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      //TODO: Make it buttons.
-                      Text(
-                        'Website 1',
-                        style: TextStyle(
-                          fontSize: kFontSizeSub,
-                          fontFamily: kFontFam,
-                        ),
-                      ),
-                      Text(
-                        'Website 2',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        'Website 3',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-                rTopLeft: 12,
-                rBottomLeft: 12,
-                rBottomRight: 12,
-                rTopRight: 12,
-              ),
-              const SizedBox(height: 15),
-              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
                   Icon(Icons.watch_later_outlined),
@@ -87,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 10),
               CustomCard(
-                height: 300,
+                height: 500,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(

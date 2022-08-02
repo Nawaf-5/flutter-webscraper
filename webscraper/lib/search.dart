@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:webscraper/custom_card.dart';
 import 'package:webscraper/utilities/constants.dart';
 
+import 'package:http/http.dart' as http;
+import 'package:html/parser.dart' as parser;
+import 'package:html/dom.dart' as dom;
+
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
-
   @override
   State<Search> createState() => _SearchState();
 }
@@ -13,7 +16,27 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   String searchURL = '';
   String searchItem = '';
-  // double resultsFontSize = 50;
+
+  List<String> result = [];
+
+  void scraper(String url, String tag) async {
+    if (url != '' && tag != '') {
+      http.Response response = await http.get(Uri.parse(url));
+
+      dom.Document document = parser.parse(response.body);
+      setState(() {
+        document.getElementsByClassName(tag).forEach((dom.Element element) {
+          result.add(element.text);
+        });
+        document.getElementsByTagName(tag).forEach((dom.Element element) {
+          result.add(element.text);
+        });
+        if (result.isEmpty) {
+          result.add('No such element exists!\nTry with a different tag/class');
+        }
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +72,6 @@ class _SearchState extends State<Search> {
                         onChanged: (v) {
                           setState(() {
                             searchURL = v;
-                            print(searchURL);
                           });
                         },
                       ),
@@ -58,12 +80,11 @@ class _SearchState extends State<Search> {
                         onChanged: (v) {
                           setState(() {
                             searchItem = v;
-                            print(searchItem);
                           });
                         },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Tag or ID',
+                          labelText: 'Tag or Class',
                           labelStyle: TextStyle(
                             color: Colors.white,
                           ),
@@ -84,7 +105,8 @@ class _SearchState extends State<Search> {
                           ),
                           onPressed: () {
                             setState(() {
-                              print(searchURL + ' Test');
+                              result = [];
+                              scraper(searchURL, searchItem);
                             });
                           },
                           //child: const Text('Search'),
@@ -106,45 +128,19 @@ class _SearchState extends State<Search> {
                   padding: const EdgeInsets.all(8),
                   child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
-                        Text(
-                          'Lorem ipsum dolor sit amet',
-                          style: TextStyle(fontSize: resultsFontSize),
-                        ),
+                        for (String s in result)
+                          Text(
+                            s,
+                            style: TextStyle(
+                              fontSize: resultsFontSize,
+                            ),
+                          ),
                       ],
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -152,3 +148,21 @@ class _SearchState extends State<Search> {
     );
   }
 }
+
+
+// if (document.firstChild != null) {
+//         print('hi naw');
+//         document.getElementsByClassName(tag).forEach((dom.Element element) {
+//           result.add(element.text);
+//           return;
+//         });
+//       } else if (document.firstChild != null) {
+//         print('hi af');
+//         document.getElementsByTagName(tag).forEach((dom.Element element) {
+//           result.add(element.text);
+//           return;
+//         });
+//       } else {
+//         result.add(
+//             'No such element exists!\nTry again with a different tag/class');
+//       }

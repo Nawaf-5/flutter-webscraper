@@ -7,14 +7,16 @@ class CustomCard extends StatelessWidget {
   final double rTopRight;
   final double rBottomLeft;
   final double rBottomRight;
-  CustomCard({
+  //
+  const CustomCard({
+    Key? key,
     required this.height,
     required this.rTopLeft,
     required this.rBottomLeft,
     required this.rBottomRight,
     required this.rTopRight,
     required this.child,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class CustomCard extends StatelessWidget {
             color: Colors.black.withOpacity(0.25),
             spreadRadius: 7,
             blurRadius: 15,
-            offset: Offset(0, 10),
+            offset: const Offset(0, 10),
           ),
         ],
         borderRadius: BorderRadius.only(
