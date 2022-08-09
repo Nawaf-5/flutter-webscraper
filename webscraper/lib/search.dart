@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:webscraper/boxes.dart';
 import 'package:webscraper/custom_card.dart';
+import 'package:webscraper/recent_storage.dart';
 import 'package:webscraper/utilities/constants.dart';
 
 import 'package:http/http.dart' as http;
@@ -36,6 +37,14 @@ class _SearchState extends State<Search> {
         }
       });
     }
+  }
+
+  Future addRecent(String site) async {
+    final recentSearch = RecentSearches();
+    recentSearch.recent = site;
+
+    final box = Boxes.getRecentSearches();
+    box.add(recentSearch);
   }
 
   @override
@@ -105,6 +114,7 @@ class _SearchState extends State<Search> {
                           ),
                           onPressed: () {
                             setState(() {
+                              addRecent(searchURL);
                               result = [];
                               scraper(searchURL, searchItem);
                             });
@@ -148,21 +158,3 @@ class _SearchState extends State<Search> {
     );
   }
 }
-
-
-// if (document.firstChild != null) {
-//         print('hi naw');
-//         document.getElementsByClassName(tag).forEach((dom.Element element) {
-//           result.add(element.text);
-//           return;
-//         });
-//       } else if (document.firstChild != null) {
-//         print('hi af');
-//         document.getElementsByTagName(tag).forEach((dom.Element element) {
-//           result.add(element.text);
-//           return;
-//         });
-//       } else {
-//         result.add(
-//             'No such element exists!\nTry again with a different tag/class');
-//       }
